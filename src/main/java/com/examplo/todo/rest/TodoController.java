@@ -22,7 +22,8 @@ import com.examplo.todo.repository.TodoRepository;
 
 @RestController
 @RequestMapping("/todos")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin("*")
 public class TodoController {
 	@Autowired
 	private TodoRepository repository;
