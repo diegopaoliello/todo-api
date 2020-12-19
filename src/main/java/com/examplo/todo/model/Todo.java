@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
@@ -20,7 +22,9 @@ import lombok.Setter;
 public class Todo {
 
 	@Id
+	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 
 	@Column
@@ -34,6 +38,7 @@ public class Todo {
 	private LocalDateTime created;
 
 	@Column
+	@JsonFormat(pattern = "dd/MM/yyyy:HH:mm")
 	private LocalDateTime doneDate;
 
 	public Long getId() {
